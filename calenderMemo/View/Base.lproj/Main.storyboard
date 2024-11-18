@@ -5,13 +5,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--글력-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="calenderMemo" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CalenderViewController" customModule="calenderMemo" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,10 +20,120 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="글력" id="3YI-xM-ymc"/>
+                    <connections>
+                        <segue destination="dmA-lS-LjV" kind="show" identifier="goToList" id="6bf-E8-Ri4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1063.3587786259541" y="4.9295774647887329"/>
+        </scene>
+        <!--Detail Table View Controller-->
+        <scene sceneID="sw1-oR-cDF">
+            <objects>
+                <tableViewController id="dmA-lS-LjV" customClass="DetailTableViewController" customModule="calenderMemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="xaZ-Do-RH1">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="tJP-yc-IzY">
+                                <rect key="frame" x="0.0" y="50" width="393" height="44.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tJP-yc-IzY" id="C7q-Gs-BbS">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dmA-lS-LjV" id="gj6-04-LgU"/>
+                            <outlet property="delegate" destination="dmA-lS-LjV" id="Eyr-fa-ZED"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="sEI-Ee-dpI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="WYp-Td-hDP">
+                            <connections>
+                                <segue destination="vpN-HL-fap" kind="show" identifier="goToWrite" id="52Z-Da-zi6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iUk-ZX-tTI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1985" y="5"/>
+        </scene>
+        <!--Write View Controller-->
+        <scene sceneID="mFj-Vg-Co7">
+            <objects>
+                <viewController id="vpN-HL-fap" customClass="WriteViewController" customModule="calenderMemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XSK-ZV-mt1">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Eb-33-IWb">
+                                <rect key="frame" x="10" y="133" width="373" height="38.333333333333343"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cjr-aK-ypY">
+                                <rect key="frame" x="10" y="191.33333333333334" width="80" height="34"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="DBR-ka-tV9"/>
+                                </constraints>
+                                <menu key="menu" id="1tC-Il-8q6">
+                                    <children>
+                                        <command title="Item 1" id="7rl-VJ-bY6"/>
+                                        <command title="Item 2" id="8UV-1V-WEM"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="분류">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="내용을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="myQ-uL-HHK">
+                                <rect key="frame" x="10" y="275.33333333333331" width="373" height="372.99999999999994"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="373" id="A1s-0l-Ysz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjJ-UK-bvp">
+                                <rect key="frame" x="313" y="688.33333333333337" width="70" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="htV-5a-tGy"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="저장">
+                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="20"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nRX-yY-9jm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nRX-yY-9jm" firstAttribute="trailing" secondItem="0Eb-33-IWb" secondAttribute="trailing" constant="10" id="42R-tl-miH"/>
+                            <constraint firstItem="myQ-uL-HHK" firstAttribute="top" secondItem="cjr-aK-ypY" secondAttribute="bottom" constant="50" id="6Fm-vf-CWt"/>
+                            <constraint firstItem="myQ-uL-HHK" firstAttribute="leading" secondItem="nRX-yY-9jm" secondAttribute="leading" constant="10" id="Lr4-lt-XvC"/>
+                            <constraint firstItem="cjr-aK-ypY" firstAttribute="leading" secondItem="nRX-yY-9jm" secondAttribute="leading" constant="10" id="Ri0-SD-ZIB"/>
+                            <constraint firstItem="nRX-yY-9jm" firstAttribute="trailing" secondItem="myQ-uL-HHK" secondAttribute="trailing" constant="10" id="c19-Ci-EPq"/>
+                            <constraint firstItem="cjr-aK-ypY" firstAttribute="top" secondItem="0Eb-33-IWb" secondAttribute="bottom" constant="20" id="g1s-M4-LsB"/>
+                            <constraint firstItem="kjJ-UK-bvp" firstAttribute="top" secondItem="myQ-uL-HHK" secondAttribute="bottom" constant="40" id="h52-tL-Mtu"/>
+                            <constraint firstItem="0Eb-33-IWb" firstAttribute="top" secondItem="nRX-yY-9jm" secondAttribute="top" constant="30" id="qAL-EX-38W"/>
+                            <constraint firstItem="0Eb-33-IWb" firstAttribute="leading" secondItem="nRX-yY-9jm" secondAttribute="leading" constant="10" id="rbK-Ik-I06"/>
+                            <constraint firstItem="nRX-yY-9jm" firstAttribute="trailing" secondItem="kjJ-UK-bvp" secondAttribute="trailing" constant="10" id="t7G-VF-XNt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6EP-uy-tQj"/>
+                    <connections>
+                        <outlet property="categorySelect" destination="cjr-aK-ypY" id="iot-0j-ZQE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gUF-Hn-Kwd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3123" y="5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XmE-01-S37">
@@ -46,6 +157,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

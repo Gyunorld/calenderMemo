@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CalenderViewController: UIViewController {
     
     lazy var dateView: UICalendarView = {
         var view = UICalendarView()
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }()
     
     var selectedDate: DateComponents? = nil
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         let dateSelection = UICalendarSelectionSingleDate(delegate: self)
         dateView.selectionBehavior = dateSelection
     }
-
+    
     fileprivate func applyConstraints() {
         view.addSubview(dateView)
         let dateViewConstraints = [
@@ -46,14 +46,26 @@ class ViewController: UIViewController {
     }
     
     func reloadDateView(date: Date?) {
-            if date == nil { return }
-            let calendar = Calendar.current
-            dateView.reloadDecorations(forDateComponents: [calendar.dateComponents([.day, .month, .year], from: date!)], animated: true)
+        if date == nil { return }
+        let calendar = Calendar.current
+        dateView.reloadDecorations(forDateComponents: [calendar.dateComponents([.day, .month, .year], from: date!)], animated: true)
+        resetSelectedDate()
+    }
+    
+    func resetSelectedDate() {
+        // 선택된 날짜 초기화
+        selectedDate = nil
+        // 달력에서 선택된 날짜 초기화
+        if let selection = dateView.selectionBehavior as? UICalendarSelectionSingleDate {
+            selection.setSelected(nil, animated: true)  // 선택 해제
         }
-
+        // 선택 상태와 데코레이션 업데이트
+        reloadDateView(date: nil)
+    }
+    
 }
 
-extension ViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
+extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
     
     // UICalendarView
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
@@ -73,5 +85,6 @@ extension ViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateD
         selection.setSelected(dateComponents, animated: true)
         selectedDate = dateComponents
         reloadDateView(date: Calendar.current.date(from: dateComponents!))
+        performSegue(withIdentifier: "goToList", sender: self)
     }
 }
