@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DetailTableViewController: UITableViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
