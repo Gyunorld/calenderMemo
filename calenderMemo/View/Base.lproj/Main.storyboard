@@ -168,34 +168,71 @@
                                 <rect key="frame" x="10" y="177" width="80" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="BXS-y8-XdR"/>
-                                    <constraint firstAttribute="width" constant="80" id="nUx-IW-aTA"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="nUx-IW-aTA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여기에는 작성한 내용이 나옵니다" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLV-TZ-Pee">
-                                <rect key="frame" x="10" y="207" width="373" height="373"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EeX-ph-Gl3">
+                                <rect key="frame" x="223" y="674" width="70" height="38"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="373" id="doG-z9-rBn"/>
-                                    <constraint firstAttribute="height" constant="373" id="syZ-jz-GIm"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="bQC-wR-f3f"/>
+                                    <constraint firstAttribute="height" constant="38" id="fn5-AB-FOm"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="rEF-8k-z03"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="삭제">
+                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="SaveButton:" destination="vpN-HL-fap" eventType="touchUpInside" id="7Z6-BP-j3U"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="여기에 내용이 나올 겁니다..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1ZM-R9-uzT">
+                                <rect key="frame" x="10" y="261" width="373" height="373"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="373" id="3Iv-ac-waN"/>
+                                    <constraint firstAttribute="height" constant="373" id="giq-JA-jfe"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EpZ-35-UeX">
+                                <rect key="frame" x="313" y="674" width="70" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="cNa-dG-pxg"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="mFe-Fh-CLw"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="수정">
+                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="SaveButton:" destination="vpN-HL-fap" eventType="touchUpInside" id="b8J-Ee-OAp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cra-r7-LDr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="P5i-1H-Nzf" secondAttribute="trailing" constant="10" id="23P-en-On4"/>
-                            <constraint firstItem="uLV-TZ-Pee" firstAttribute="top" secondItem="P5i-1H-Nzf" secondAttribute="bottom" constant="50" id="ImM-w7-In9"/>
-                            <constraint firstItem="uLV-TZ-Pee" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="10" id="LVO-dE-QyK"/>
+                            <constraint firstItem="1ZM-R9-uzT" firstAttribute="top" secondItem="sGl-y0-G6e" secondAttribute="bottom" constant="50" id="3gd-s2-A0J"/>
+                            <constraint firstItem="EpZ-35-UeX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EeX-ph-Gl3" secondAttribute="trailing" constant="8" symbolic="YES" id="5AS-Hk-TLx"/>
+                            <constraint firstItem="EpZ-35-UeX" firstAttribute="top" secondItem="1ZM-R9-uzT" secondAttribute="bottom" constant="40" id="B3E-Ja-AKx"/>
+                            <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="sGl-y0-G6e" secondAttribute="trailing" constant="303" id="ERb-dI-7je"/>
                             <constraint firstItem="P5i-1H-Nzf" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="10" id="NLK-Pi-Mes"/>
-                            <constraint firstItem="sGl-y0-G6e" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="10" id="QkC-F3-wow"/>
-                            <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="uLV-TZ-Pee" secondAttribute="trailing" constant="10" id="hJG-qa-FeI"/>
+                            <constraint firstItem="sGl-y0-G6e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cra-r7-LDr" secondAttribute="leading" id="QkC-F3-wow"/>
+                            <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="1ZM-R9-uzT" secondAttribute="trailing" constant="10" id="XRa-Rj-H7v"/>
+                            <constraint firstItem="EeX-ph-Gl3" firstAttribute="top" secondItem="1ZM-R9-uzT" secondAttribute="bottom" constant="40" id="gU6-IH-aul"/>
+                            <constraint firstItem="1ZM-R9-uzT" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="10" id="kCV-za-A3g"/>
+                            <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="EpZ-35-UeX" secondAttribute="trailing" constant="10" id="mfe-SV-gmF"/>
                             <constraint firstItem="sGl-y0-G6e" firstAttribute="top" secondItem="P5i-1H-Nzf" secondAttribute="bottom" constant="20" id="q42-wS-n5x"/>
                             <constraint firstItem="P5i-1H-Nzf" firstAttribute="top" secondItem="cra-r7-LDr" secondAttribute="top" constant="30" id="waE-4H-kqM"/>
+                            <constraint firstItem="EeX-ph-Gl3" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="223" id="yLg-dh-6PH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="gPQ-yZ-48V"/>
@@ -232,6 +269,9 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
