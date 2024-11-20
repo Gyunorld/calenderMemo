@@ -13,9 +13,7 @@ class CalenderViewController: UIViewController {
     lazy var dateView: UICalendarView = {
         var view = UICalendarView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         view.wantsDateDecorations = true
-        
         return view
     }()
     
@@ -23,7 +21,6 @@ class CalenderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         applyConstraints()
         setCalendar()
         reloadDateView(date: Date())
@@ -54,13 +51,10 @@ class CalenderViewController: UIViewController {
     }
     
     func resetSelectedDate() {
-        // 선택된 날짜 초기화
         selectedDate = nil
-        // 달력에서 선택된 날짜 초기화
         if let selection = dateView.selectionBehavior as? UICalendarSelectionSingleDate {
             selection.setSelected(nil, animated: true)  // 선택 해제
         }
-        // 선택 상태와 데코레이션 업데이트
         reloadDateView(date: nil)
     }
     
@@ -87,5 +81,14 @@ extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSin
         selectedDate = dateComponents
         reloadDateView(date: Calendar.current.date(from: dateComponents!))
         performSegue(withIdentifier: "goToList", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToList" , let detailVC = segue.destination as? DetailTableViewController{
+            if let selectedDate = selectedDate {
+                let calendar = Calendar.current
+                detailVC.selectedDate = calendar.date(from: selectedDate)
+            }
+        }
     }
 }

@@ -12,6 +12,8 @@ class WriteViewController: UIViewController {
     
     let realm = try! Realm()
     
+    var selectedDate: Date?
+    
     @IBOutlet weak var TitleEdit: UITextField!
     @IBOutlet weak var BodyEdit: UITextView!
     @IBOutlet weak var categorySelect: UIButton!
@@ -24,9 +26,7 @@ class WriteViewController: UIViewController {
         setBodyStyle()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.BodyEdit.resignFirstResponder()
-    }
+    //MARK: - Category Button Methods
     
     func setCategory() {
         let menu = UIMenu(title: "종류", children: categoryAction())
@@ -53,12 +53,18 @@ class WriteViewController: UIViewController {
         categorySelect.layer.cornerRadius = 10
     }
     
+    //MARK: - BodyEdit Methods
+    
     func setBodyStyle() {
         BodyEdit.delegate = self
         BodyEdit.text = "내용을 입력하세요."
         BodyEdit.textColor = .lightGray
         BodyEdit.layer.borderWidth = 0.5
         BodyEdit.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.BodyEdit.resignFirstResponder()
     }
     
     //MARK: - Save Letter
@@ -86,6 +92,7 @@ class WriteViewController: UIViewController {
                 letter.Title = titleText
                 letter.category = category
                 letter.Body = bodyText
+                letter.createdAt = selectedDate ?? Date()
                 realm.add(letter)
             }
             showAlert(message: "저장이 완료되었습니다.✅",goBack: true)
@@ -95,7 +102,7 @@ class WriteViewController: UIViewController {
     }
     
     func showAlert(message: String, goBack: Bool = false) {
-        let alert = UIAlertController(title: "주의⚠️", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "알림📢", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
             if goBack {
                 self?.navigationController?.popViewController(animated: true)
