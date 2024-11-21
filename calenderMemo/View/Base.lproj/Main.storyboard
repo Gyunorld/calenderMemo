@@ -45,7 +45,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ubd-2Q-sEo" kind="show" id="n0F-RU-ddQ"/>
+                                    <segue destination="ubd-2Q-sEo" kind="show" identifier="goToLetter" id="n0F-RU-ddQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -153,7 +153,7 @@
         <!--Letter View Controller-->
         <scene sceneID="yKr-Ft-l87">
             <objects>
-                <viewController id="ubd-2Q-sEo" customClass="LetterViewController" sceneMemberID="viewController">
+                <viewController id="ubd-2Q-sEo" customClass="LetterViewController" customModule="calenderMemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yEF-rw-WJy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,6 +236,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="gPQ-yZ-48V"/>
+                    <connections>
+                        <outlet property="letterBody" destination="1ZM-R9-uzT" id="fNa-e7-l27"/>
+                        <outlet property="letterCategory" destination="sGl-y0-G6e" id="Dcl-yI-8db"/>
+                        <outlet property="letterTitle" destination="P5i-1H-Nzf" id="PsJ-fz-qhc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxH-k7-jf0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

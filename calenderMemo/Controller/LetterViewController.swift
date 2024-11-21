@@ -9,22 +9,21 @@ import UIKit
 import RealmSwift
 
 class LetterViewController: UIViewController {
+    
+    let realm = try! Realm()
 
+    @IBOutlet weak var letterTitle: UILabel!
+    @IBOutlet weak var letterCategory: UILabel!
+    @IBOutlet weak var letterBody: UITextView!
+    
+    var selectedLetter: Letter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        letterTitle.text = selectedLetter?.Title
+        letterCategory.text = selectedLetter?.category
+        letterBody.text = selectedLetter?.Body
+        letterBody.isEditable = false
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

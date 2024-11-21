@@ -63,8 +63,11 @@ class DetailTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToWrite", let writeVC = segue.destination as? WriteViewController {
             writeVC.createdDate = formattedDate
+        } else if segue.identifier == "goToLetter", let letterVC = segue.destination as? LetterViewController, let indexPath = tableView.indexPathForSelectedRow {
+            letterVC.selectedLetter = letters?[indexPath.row]
         }
     }
+    
     
     //MARK: - Load Data
     
