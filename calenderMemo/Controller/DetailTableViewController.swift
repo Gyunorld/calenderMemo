@@ -12,29 +12,48 @@ class DetailTableViewController: UITableViewController {
     
     let realm = try! Realm()
     
-    var selectedDate: Date?
+    var formattedDate: String?
     
     var letters: Results<Letter>?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadAllLetters()
+        loadDateLetters()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadDateLetters()
+    }
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let letters = letters, letters.isEmpty {
+            return 1
+        }
         return letters?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if let letters = letters, letters.isEmpty {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
+            cell.textLabel?.text = "작성된 글이 없습니다. 글을 작성해 주세요."
+            cell.textLabel?.textColor = .lightGray
+            cell.textLabel?.textAlignment = .center
+            tableView.separatorStyle = .none
+            tableView.allowsSelection = false
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
         if let letter = letters?[indexPath.row] {
             cell.textLabel?.text = letter.Title
         }
         return cell
     }
-
+    
     //MARK: - Table View Delegate
     
     @IBAction func writeNew(_ sender: UIBarButtonItem) {
@@ -43,14 +62,15 @@ class DetailTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToWrite", let writeVC = segue.destination as? WriteViewController {
-            writeVC.selectedDate = self.selectedDate
+            writeVC.createdDate = formattedDate
         }
     }
     
     //MARK: - Load Data
     
-    func loadAllLetters() {
-        letters = realm.objects(Letter.self)
+    func loadDateLetters() {
+        guard let formattedDate = formattedDate else { return }
+        letters = realm.objects(Letter.self).filter("createdAt == %@",formattedDate)
         tableView.reloadData()
     }
 }
