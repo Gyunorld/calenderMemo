@@ -12,7 +12,7 @@ class WriteViewController: UIViewController {
     
     let realm = try! Realm()
     
-    var selectedDate: Date?
+    var createdDate: String?
     
     @IBOutlet weak var TitleEdit: UITextField!
     @IBOutlet weak var BodyEdit: UITextView!
@@ -86,13 +86,17 @@ class WriteViewController: UIViewController {
             return
         }
         
+        guard let createdDate = createdDate else {
+            return
+        }
+        
         do {
             try realm.write {
                 let letter = Letter()
                 letter.Title = titleText
                 letter.category = category
                 letter.Body = bodyText
-                letter.createdAt = selectedDate ?? Date()
+                letter.createdAt = createdDate
                 realm.add(letter)
             }
             showAlert(message: "저장이 완료되었습니다.✅",goBack: true)

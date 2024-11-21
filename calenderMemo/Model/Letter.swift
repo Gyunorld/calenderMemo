@@ -11,7 +11,7 @@ import RealmSwift
 class Letter: Object {
     @objc dynamic var Title: String = ""
     @objc dynamic var Body: String = ""
-    @objc dynamic var createdAt: Date = Date()
+    @objc dynamic var createdAt: String = ""
     @objc dynamic var category = Category.RawValue()
 
     enum Category: String {

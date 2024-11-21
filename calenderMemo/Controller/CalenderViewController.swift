@@ -51,7 +51,6 @@ class CalenderViewController: UIViewController {
     }
     
     func resetSelectedDate() {
-        selectedDate = nil
         if let selection = dateView.selectionBehavior as? UICalendarSelectionSingleDate {
             selection.setSelected(nil, animated: true)  // 선택 해제
         }
@@ -87,7 +86,9 @@ extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSin
         if segue.identifier == "goToList" , let detailVC = segue.destination as? DetailTableViewController{
             if let selectedDate = selectedDate {
                 let calendar = Calendar.current
-                detailVC.selectedDate = calendar.date(from: selectedDate)
+                if let date = calendar.date(from: selectedDate) {
+                    detailVC.formattedDate = DateFormatterUtils.formatDate(date)
+                }
             }
         }
     }
