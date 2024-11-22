@@ -20,10 +20,50 @@ class LetterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLetter()
+    }
+    
+    func setLetter() {
         letterTitle.text = selectedLetter?.Title
         letterCategory.text = selectedLetter?.category
         letterBody.text = selectedLetter?.Body
         letterBody.isEditable = false
     }
-
+    
+    
+    @IBAction func deleteLetter(_ sender: Any) {
+        
+        let cautionAlert = UIAlertController(title: "주의⚠️", message: "삭제된 글은 복구되지 않습니다. 정말로 삭제하시겠습니까?", preferredStyle: .alert)
+        cautionAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        cautionAlert.addAction(UIAlertAction(title: "삭제", style: .default, handler: { [self] _ in
+            do{
+                try realm.write {
+                    self.realm.delete(self.selectedLetter!)
+                }
+                let deleteAlert = UIAlertController(title: "삭제🚮", message: "성공적으로 삭제되었습니다.", preferredStyle: .alert)
+                deleteAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(deleteAlert, animated: true, completion: nil)
+            } catch {
+                fatalError("Error deleting letter: \(error)")
+            }
+        }))
+        self.present(cautionAlert, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func updateLetter(_ sender: UIButton) {
+            performSegue(withIdentifier: "goToUpdate", sender: self)
+            print("updateLetter")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToUpdate", let writeVC = segue.destination as? WriteViewController {
+            writeVC.isUpdateLetter = true
+            writeVC.updateLetter = selectedLetter
+            print("prepare")
+        }
+    }
+    
 }

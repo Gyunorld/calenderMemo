@@ -50,6 +50,10 @@ class DetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
         if let letter = letters?[indexPath.row] {
             cell.textLabel?.text = letter.Title
+            cell.textLabel?.textColor = .black
+            cell.textLabel?.textAlignment = .justified
+            tableView.separatorStyle = .singleLine
+            tableView.allowsSelection = true
         }
         return cell
     }
