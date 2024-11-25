@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F2301F512CEB21D100D6B910 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F2301F502CEB21D100D6B910 /* RealmSwift */; };
+		F29C1AD02CE09831006825B5 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29C1ACF2CE09831006825B5 /* SwipeCellKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F2C920042CDDE5C700AE409C /* calenderMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calenderMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2301F512CEB21D100D6B910 /* RealmSwift in Frameworks */,
+				F29C1AD02CE09831006825B5 /* SwipeCellKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,8 @@
 			);
 			name = calenderMemo;
 			packageProductDependencies = (
+				F29C1ACF2CE09831006825B5 /* SwipeCellKit */,
+				F2301F502CEB21D100D6B910 /* RealmSwift */,
 			);
 			productName = calenderMemo;
 			productReference = F2C920042CDDE5C700AE409C /* calenderMemo.app */;
@@ -107,6 +116,10 @@
 			);
 			mainGroup = F2C91FFB2CDDE5C700AE409C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F29C1ACE2CE09831006825B5 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				F2301F4F2CEB21D100D6B910 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F2C920052CDDE5C700AE409C /* Products */;
 			projectDirPath = "";
@@ -148,6 +161,7 @@
 				DEVELOPMENT_TEAM = FMHAT7KHA7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = calenderMemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "글력";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -179,6 +193,7 @@
 				DEVELOPMENT_TEAM = FMHAT7KHA7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = calenderMemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "글력";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -341,6 +356,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F2301F4F2CEB21D100D6B910 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.49.3;
+			};
+		};
+		F29C1ACE2CE09831006825B5 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F2301F502CEB21D100D6B910 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2301F4F2CEB21D100D6B910 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		F29C1ACF2CE09831006825B5 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29C1ACE2CE09831006825B5 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F2C91FFC2CDDE5C700AE409C /* Project object */;
 }
