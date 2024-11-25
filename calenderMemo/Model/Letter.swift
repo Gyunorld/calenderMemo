@@ -9,10 +9,16 @@ import Foundation
 import RealmSwift
 
 class Letter: Object {
+    
+    @objc dynamic var LetterId = UUID().uuidString
     @objc dynamic var Title: String = ""
     @objc dynamic var Body: String = ""
     @objc dynamic var createdAt: String = ""
     @objc dynamic var category = Category.RawValue()
+    
+    override class func primaryKey() -> String? {
+        return "LetterId"
+    }
 
     enum Category: String {
         case diary = "일기"

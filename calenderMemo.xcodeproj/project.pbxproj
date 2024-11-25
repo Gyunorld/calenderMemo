@@ -161,6 +161,7 @@
 				DEVELOPMENT_TEAM = FMHAT7KHA7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = calenderMemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "글력";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -192,6 +193,7 @@
 				DEVELOPMENT_TEAM = FMHAT7KHA7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = calenderMemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "글력";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

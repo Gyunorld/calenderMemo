@@ -23,12 +23,23 @@ class LetterViewController: UIViewController {
         setLetter()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setLetter()
+    }
+    
     func setLetter() {
         letterTitle.text = selectedLetter?.Title
         letterCategory.text = selectedLetter?.category
         letterBody.text = selectedLetter?.Body
         letterBody.isEditable = false
+        letterBody.layer.borderWidth = 0.5
+        letterBody.layer.borderColor = UIColor.black.cgColor
+        letterCategory.layer.borderWidth = 0.5
+        letterCategory.layer.borderColor = UIColor.black.cgColor
+        letterCategory.layer.cornerRadius = 10
     }
+    
     
     
     @IBAction func deleteLetter(_ sender: Any) {
@@ -52,17 +63,14 @@ class LetterViewController: UIViewController {
         self.present(cautionAlert, animated: true, completion: nil)
     }
     
-    
-    @IBAction func updateLetter(_ sender: UIButton) {
-            performSegue(withIdentifier: "goToUpdate", sender: self)
-            print("updateLetter")
+    @IBAction func updateLetter(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "goToUpdate", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToUpdate", let writeVC = segue.destination as? WriteViewController {
             writeVC.isUpdateLetter = true
             writeVC.updateLetter = selectedLetter
-            print("prepare")
         }
     }
     

@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" id="tJP-yc-IzY">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="tJP-yc-IzY" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
                                 <rect key="frame" x="0.0" y="50" width="393" height="44.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tJP-yc-IzY" id="C7q-Gs-BbS">
@@ -121,7 +121,7 @@
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nRX-yY-9jm"/>
@@ -175,71 +175,61 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EeX-ph-Gl3">
-                                <rect key="frame" x="223" y="674" width="70" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="bQC-wR-f3f"/>
-                                    <constraint firstAttribute="height" constant="38" id="fn5-AB-FOm"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="rEF-8k-z03"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <rect key="frame" x="10" y="760" width="373" height="38"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="삭제">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="strokeColor" systemColor="systemRedColor"/>
+                                    </backgroundConfiguration>
                                     <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="20"/>
-                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="SaveButton:" destination="vpN-HL-fap" eventType="touchUpInside" id="7Z6-BP-j3U"/>
                                     <action selector="deleteLetter:" destination="ubd-2Q-sEo" eventType="touchUpInside" id="RiN-la-xxl"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="여기에 내용이 나올 겁니다..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1ZM-R9-uzT">
-                                <rect key="frame" x="10" y="261" width="373" height="373"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="여기에 내용이 나올 겁니다..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1ZM-R9-uzT">
+                                <rect key="frame" x="10" y="231" width="373" height="373"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="373" id="3Iv-ac-waN"/>
                                     <constraint firstAttribute="height" constant="373" id="giq-JA-jfe"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EpZ-35-UeX">
-                                <rect key="frame" x="313" y="674" width="70" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="cNa-dG-pxg"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="mFe-Fh-CLw"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="수정">
-                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="20"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="SaveButton:" destination="vpN-HL-fap" eventType="touchUpInside" id="b8J-Ee-OAp"/>
-                                    <action selector="updateLetter:" destination="ubd-2Q-sEo" eventType="touchUpInside" id="thg-e6-5xp"/>
-                                    <segue destination="vpN-HL-fap" kind="show" identifier="goToUpdate" id="Wc8-J1-cVb"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cra-r7-LDr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="P5i-1H-Nzf" secondAttribute="trailing" constant="10" id="23P-en-On4"/>
-                            <constraint firstItem="1ZM-R9-uzT" firstAttribute="top" secondItem="sGl-y0-G6e" secondAttribute="bottom" constant="50" id="3gd-s2-A0J"/>
-                            <constraint firstItem="EpZ-35-UeX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EeX-ph-Gl3" secondAttribute="trailing" constant="8" symbolic="YES" id="5AS-Hk-TLx"/>
-                            <constraint firstItem="EpZ-35-UeX" firstAttribute="top" secondItem="1ZM-R9-uzT" secondAttribute="bottom" constant="40" id="B3E-Ja-AKx"/>
+                            <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="EeX-ph-Gl3" secondAttribute="trailing" constant="10" id="2la-0z-PnI"/>
+                            <constraint firstItem="cra-r7-LDr" firstAttribute="bottom" secondItem="EeX-ph-Gl3" secondAttribute="bottom" constant="20" id="3bG-f2-0H8"/>
+                            <constraint firstItem="1ZM-R9-uzT" firstAttribute="top" secondItem="sGl-y0-G6e" secondAttribute="bottom" constant="20" id="3gd-s2-A0J"/>
                             <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="sGl-y0-G6e" secondAttribute="trailing" constant="303" id="ERb-dI-7je"/>
                             <constraint firstItem="P5i-1H-Nzf" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="10" id="NLK-Pi-Mes"/>
                             <constraint firstItem="sGl-y0-G6e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cra-r7-LDr" secondAttribute="leading" id="QkC-F3-wow"/>
                             <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="1ZM-R9-uzT" secondAttribute="trailing" constant="10" id="XRa-Rj-H7v"/>
-                            <constraint firstItem="EeX-ph-Gl3" firstAttribute="top" secondItem="1ZM-R9-uzT" secondAttribute="bottom" constant="40" id="gU6-IH-aul"/>
+                            <constraint firstItem="EeX-ph-Gl3" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="10" id="ayt-o6-g16"/>
                             <constraint firstItem="1ZM-R9-uzT" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="10" id="kCV-za-A3g"/>
-                            <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="EpZ-35-UeX" secondAttribute="trailing" constant="10" id="mfe-SV-gmF"/>
                             <constraint firstItem="sGl-y0-G6e" firstAttribute="top" secondItem="P5i-1H-Nzf" secondAttribute="bottom" constant="20" id="q42-wS-n5x"/>
                             <constraint firstItem="P5i-1H-Nzf" firstAttribute="top" secondItem="cra-r7-LDr" secondAttribute="top" constant="30" id="waE-4H-kqM"/>
-                            <constraint firstItem="EeX-ph-Gl3" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="223" id="yLg-dh-6PH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" style="editor" id="gPQ-yZ-48V"/>
+                    <navigationItem key="navigationItem" style="editor" id="gPQ-yZ-48V">
+                        <barButtonItem key="rightBarButtonItem" title="편집" image="pencil.line" catalog="system" id="Abc-qC-FUe">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="updateLetter:" destination="ubd-2Q-sEo" id="MFa-zE-68J"/>
+                                <segue destination="vpN-HL-fap" kind="show" identifier="goToUpdate" id="ucv-Oa-XhM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="letterBody" destination="1ZM-R9-uzT" id="fNa-e7-l27"/>
                         <outlet property="letterCategory" destination="sGl-y0-G6e" id="Dcl-yI-8db"/>
@@ -258,6 +248,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CEs-1O-KFn">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -270,9 +264,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Wc8-J1-cVb"/>
+        <segue reference="ucv-Oa-XhM"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="pencil.line" catalog="system" width="128" height="117"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -280,10 +275,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
