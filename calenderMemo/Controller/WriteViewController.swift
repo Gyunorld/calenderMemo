@@ -80,7 +80,7 @@ class WriteViewController: UIViewController {
     //MARK: - Save Letter
     
     @IBAction func SaveButton(_ sender: UIButton) {
-        print("button 작동")
+        
         guard let titleText = TitleEdit.text, !titleText.isEmpty else {
             saveAlert(message: "제목을 입력해주세요.")
             return
@@ -96,11 +96,6 @@ class WriteViewController: UIViewController {
             return
         }
         
-        guard let createdDate = createdDate else {
-            return
-        }
-        
-        
         do {
             try realm.write {
                 if isUpdateLetter, let letter = updateLetter {
@@ -108,6 +103,9 @@ class WriteViewController: UIViewController {
                     letter.category = category
                     letter.Body = bodyText
                 } else {
+                    guard let createdDate = createdDate else {
+                        return
+                    }
                     let letter = Letter()
                     letter.Title = titleText
                     letter.category = category

@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class DetailTableViewController: UITableViewController {
+class DetailTableViewController: SwipeTableViewController {
     
     let realm = try! Realm()
     
@@ -36,9 +36,9 @@ class DetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let letters = letters, letters.isEmpty {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
             cell.textLabel?.text = "작성된 글이 없습니다. 글을 작성해 주세요."
             cell.textLabel?.textColor = .lightGray
             cell.textLabel?.textAlignment = .center
@@ -47,7 +47,6 @@ class DetailTableViewController: UITableViewController {
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
         if let letter = letters?[indexPath.row] {
             cell.textLabel?.text = letter.Title
             cell.textLabel?.textColor = .black
@@ -79,5 +78,22 @@ class DetailTableViewController: UITableViewController {
         guard let formattedDate = formattedDate else { return }
         letters = realm.objects(Letter.self).filter("createdAt == %@",formattedDate)
         tableView.reloadData()
+    }
+    
+    //MARK: - Swipe Delete
+    
+    override func updateModel(at indexPath: IndexPath) {
+        if let letterDelete = letters?[indexPath.row] {
+            do{
+                try realm.write {
+                    realm.delete(letterDelete)
+                }
+            } catch {
+                print("Error Delete Swipe: \(error)")
+            }
+        }
+        DispatchQueue.main.async {
+            self.loadDateLetters()
+        }
     }
 }

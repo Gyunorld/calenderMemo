@@ -18,6 +18,7 @@ class CalenderViewController: UIViewController {
     }()
     
     var selectedDate: DateComponents? = nil
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +27,29 @@ class CalenderViewController: UIViewController {
         reloadDateView(date: Date())
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setCalendar()
+    }
+    
     fileprivate func setCalendar() {
         dateView.delegate = self
         let dateSelection = UICalendarSelectionSingleDate(delegate: self)
         dateView.selectionBehavior = dateSelection
+        
+        let calendar = Calendar.current
+        let allLetters = realm.objects(Letter.self)
+        
+        for letter in allLetters {
+            if let letterDate = DateFormatterUtils.date(from: letter.createdAt){
+                let dateComponents = calendar.dateComponents([.day, .month, .year], from: letterDate)
+                dateView.reloadDecorations(forDateComponents: [dateComponents], animated: true)
+                print(letter.createdAt)
+            }
+        }
+        
     }
+    
     
     fileprivate func applyConstraints() {
         view.addSubview(dateView)
@@ -63,10 +82,16 @@ extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSin
     
     // UICalendarView
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
-        if let selectedDate = selectedDate, selectedDate == dateComponents {
+        let calendar = Calendar.current
+        let date = calendar.date(from: dateComponents)
+        let dateString = DateFormatterUtils.formatDate(date ?? Date(), format: "yyyy-MM-dd")
+        let letterAvailable = realm.objects(Letter.self).filter {
+            $0.createdAt == dateString
+        }
+        if !letterAvailable.isEmpty {
             return .customView {
                 let label = UILabel()
-                label.text = "✅"
+                label.text = "✍︎"
                 label.textAlignment = .center
                 return label
             }
@@ -91,5 +116,16 @@ extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSin
                 }
             }
         }
+    }
+}
+
+extension String {
+    func toDateComponents() -> DateComponents {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        if let date = formatter.date(from: self) {
+            return Calendar.current.dateComponents([.day, .month, .year], from: date)
+        }
+        return DateComponents()
     }
 }
