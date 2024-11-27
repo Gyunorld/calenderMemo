@@ -58,7 +58,7 @@ class WriteViewController: UIViewController {
     
     func setCategoryStyle() {
         categorySelect.setTitle("카테고리", for: .normal)
-        categorySelect.layer.borderWidth = 0.5
+        categorySelect.layer.borderWidth = 1
         categorySelect.layer.borderColor = UIColor.black.cgColor
         categorySelect.layer.cornerRadius = 10
     }
@@ -69,7 +69,8 @@ class WriteViewController: UIViewController {
         BodyEdit.delegate = self
         BodyEdit.text = "내용을 입력하세요."
         BodyEdit.textColor = .lightGray
-        BodyEdit.layer.borderWidth = 0.5
+        BodyEdit.layer.borderWidth = 1
+        BodyEdit.layer.cornerRadius = 10
         BodyEdit.layer.borderColor = UIColor.black.cgColor
     }
     

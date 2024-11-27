@@ -33,9 +33,10 @@ class LetterViewController: UIViewController {
         letterCategory.text = selectedLetter?.category
         letterBody.text = selectedLetter?.Body
         letterBody.isEditable = false
-        letterBody.layer.borderWidth = 0.5
+        letterBody.layer.borderWidth = 1
         letterBody.layer.borderColor = UIColor.black.cgColor
-        letterCategory.layer.borderWidth = 0.5
+        letterBody.layer.cornerRadius = 10
+        letterCategory.layer.borderWidth = 1
         letterCategory.layer.borderColor = UIColor.black.cgColor
         letterCategory.layer.cornerRadius = 10
     }

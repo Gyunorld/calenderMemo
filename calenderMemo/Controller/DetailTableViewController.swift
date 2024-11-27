@@ -29,23 +29,11 @@ class DetailTableViewController: SwipeTableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let letters = letters, letters.isEmpty {
-            return 1
-        }
         return letters?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        
-        if let letters = letters, letters.isEmpty {
-            cell.textLabel?.text = "작성된 글이 없습니다. 글을 작성해 주세요."
-            cell.textLabel?.textColor = .lightGray
-            cell.textLabel?.textAlignment = .center
-            tableView.separatorStyle = .none
-            tableView.allowsSelection = false
-            return cell
-        }
         
         if let letter = letters?[indexPath.row] {
             cell.textLabel?.text = letter.Title
@@ -93,7 +81,7 @@ class DetailTableViewController: SwipeTableViewController {
             }
         }
         DispatchQueue.main.async {
-            self.loadDateLetters()
+            self.tableView.reloadData() 
         }
     }
 }
