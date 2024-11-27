@@ -44,7 +44,6 @@ class CalenderViewController: UIViewController {
             if let letterDate = DateFormatterUtils.date(from: letter.createdAt){
                 let dateComponents = calendar.dateComponents([.day, .month, .year], from: letterDate)
                 dateView.reloadDecorations(forDateComponents: [dateComponents], animated: true)
-                print(letter.createdAt)
             }
         }
         

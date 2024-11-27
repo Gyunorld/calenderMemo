@@ -7,9 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F2301F512CEB21D100D6B910 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F2301F502CEB21D100D6B910 /* RealmSwift */; };
-		F29C1AD02CE09831006825B5 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29C1ACF2CE09831006825B5 /* SwipeCellKit */; };
+		F2301F512CEB21D100D6B910 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F2301F502CEB21D100D6B910 /* RealmSwift */; settings = {ATTRIBUTES = (Required, ); }; };
+		F2798FC72CF703FC00B5D95D /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = F2301F502CEB21D100D6B910 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F29C1AD02CE09831006825B5 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = F29C1ACF2CE09831006825B5 /* SwipeCellKit */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F2798FC82CF703FC00B5D95D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F2798FC72CF703FC00B5D95D /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F2C920042CDDE5C700AE409C /* calenderMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calenderMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +90,7 @@
 				F2C920002CDDE5C700AE409C /* Sources */,
 				F2C920012CDDE5C700AE409C /* Frameworks */,
 				F2C920022CDDE5C700AE409C /* Resources */,
+				F2798FC82CF703FC00B5D95D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,6 +185,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -201,6 +218,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

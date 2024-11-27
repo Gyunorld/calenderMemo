@@ -85,7 +85,6 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cjr-aK-ypY">
                                 <rect key="frame" x="10" y="191.33333333333334" width="80" height="34"/>
-                                <color key="backgroundColor" systemColor="systemGray4Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="DBR-ka-tV9"/>
                                 </constraints>
@@ -168,7 +167,7 @@
                                 <rect key="frame" x="10" y="177" width="80" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="BXS-y8-XdR"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="nUx-IW-aTA"/>
+                                    <constraint firstAttribute="width" constant="80" id="HWy-Ws-b1a"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -213,7 +212,7 @@
                             <constraint firstItem="1ZM-R9-uzT" firstAttribute="top" secondItem="sGl-y0-G6e" secondAttribute="bottom" constant="20" id="3gd-s2-A0J"/>
                             <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="sGl-y0-G6e" secondAttribute="trailing" constant="303" id="ERb-dI-7je"/>
                             <constraint firstItem="P5i-1H-Nzf" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="10" id="NLK-Pi-Mes"/>
-                            <constraint firstItem="sGl-y0-G6e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cra-r7-LDr" secondAttribute="leading" id="QkC-F3-wow"/>
+                            <constraint firstItem="sGl-y0-G6e" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="10" id="QkC-F3-wow"/>
                             <constraint firstItem="cra-r7-LDr" firstAttribute="trailing" secondItem="1ZM-R9-uzT" secondAttribute="trailing" constant="10" id="XRa-Rj-H7v"/>
                             <constraint firstItem="EeX-ph-Gl3" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="10" id="ayt-o6-g16"/>
                             <constraint firstItem="1ZM-R9-uzT" firstAttribute="leading" secondItem="cra-r7-LDr" secondAttribute="leading" constant="10" id="kCV-za-A3g"/>
@@ -223,7 +222,7 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="gPQ-yZ-48V">
                         <barButtonItem key="rightBarButtonItem" title="편집" image="pencil.line" catalog="system" id="Abc-qC-FUe">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <action selector="updateLetter:" destination="ubd-2Q-sEo" id="MFa-zE-68J"/>
                                 <segue destination="vpN-HL-fap" kind="show" identifier="goToUpdate" id="ucv-Oa-XhM"/>
@@ -274,11 +273,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
