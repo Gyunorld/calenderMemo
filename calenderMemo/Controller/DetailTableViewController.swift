@@ -18,6 +18,7 @@ class DetailTableViewController: SwipeTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = formattedDate
         loadDateLetters()
     }
     
