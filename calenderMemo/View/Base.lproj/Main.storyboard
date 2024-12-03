@@ -22,6 +22,7 @@
                     <navigationItem key="navigationItem" title="글력" id="3YI-xM-ymc"/>
                     <connections>
                         <segue destination="dmA-lS-LjV" kind="show" identifier="goToList" id="6bf-E8-Ri4"/>
+                        <segue destination="vpN-HL-fap" kind="show" identifier="writeToFirst" id="Zdi-ag-DE7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -254,7 +255,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="52Z-Da-zi6"/>
+        <segue reference="Zdi-ag-DE7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="pencil.line" catalog="system" width="128" height="117"/>

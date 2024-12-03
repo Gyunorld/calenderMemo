@@ -103,7 +103,16 @@ extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSin
         selection.setSelected(dateComponents, animated: true)
         selectedDate = dateComponents
         reloadDateView(date: Calendar.current.date(from: dateComponents!))
-        performSegue(withIdentifier: "goToList", sender: self)
+        let date = selectedDate?.date
+        let dateString = DateFormatterUtils.formatDate(date ?? Date(), format: "yyyy-MM-dd")
+        let letterAvailable = realm.objects(Letter.self).filter {
+            $0.createdAt == dateString
+        }
+        if letterAvailable.isEmpty {
+            performSegue(withIdentifier: "writeToFirst", sender: self)
+        } else {
+            performSegue(withIdentifier: "goToList", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -112,6 +121,13 @@ extension CalenderViewController: UICalendarViewDelegate, UICalendarSelectionSin
                 let calendar = Calendar.current
                 if let date = calendar.date(from: selectedDate) {
                     detailVC.formattedDate = DateFormatterUtils.formatDate(date)
+                }
+            }
+        } else if segue.identifier == "writeToFirst" , let writeVC = segue.destination as? WriteViewController {
+            if let selectedDate = selectedDate {
+                let calendar = Calendar.current
+                if let date = calendar.date(from: selectedDate) {
+                    writeVC.createdDate = DateFormatterUtils.formatDate(date)
                 }
             }
         }
