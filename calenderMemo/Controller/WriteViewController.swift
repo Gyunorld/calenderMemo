@@ -79,8 +79,7 @@ class WriteViewController: UIViewController {
     }
     
     //MARK: - Save Letter
-    
-    @IBAction func SaveButton(_ sender: UIButton) {
+    @IBAction func SaveLetter(_ sender: UIBarButtonItem) {
         
         guard let titleText = TitleEdit.text, !titleText.isEmpty else {
             saveAlert(message: "제목을 입력해주세요.")
@@ -131,6 +130,7 @@ class WriteViewController: UIViewController {
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
+        
 }
 
 //MARK: - Text View Delegate

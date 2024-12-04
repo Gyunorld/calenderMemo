@@ -22,6 +22,7 @@
                     <navigationItem key="navigationItem" title="글력" id="3YI-xM-ymc"/>
                     <connections>
                         <segue destination="dmA-lS-LjV" kind="show" identifier="goToList" id="6bf-E8-Ri4"/>
+                        <segue destination="vpN-HL-fap" kind="show" identifier="writeToFirst" id="Zdi-ag-DE7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -98,19 +99,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjJ-UK-bvp">
-                                <rect key="frame" x="313" y="688.33333333333337" width="70" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="htV-5a-tGy"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="저장">
-                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="20"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="SaveButton:" destination="vpN-HL-fap" eventType="touchUpInside" id="eyr-p8-JjV"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tPk-Sj-9P2">
                                 <rect key="frame" x="10" y="275.33333333333331" width="373" height="372.99999999999994"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -128,17 +116,22 @@
                         <constraints>
                             <constraint firstItem="nRX-yY-9jm" firstAttribute="trailing" secondItem="0Eb-33-IWb" secondAttribute="trailing" constant="10" id="42R-tl-miH"/>
                             <constraint firstItem="nRX-yY-9jm" firstAttribute="trailing" secondItem="tPk-Sj-9P2" secondAttribute="trailing" constant="10" id="4Vv-gh-xhY"/>
-                            <constraint firstItem="kjJ-UK-bvp" firstAttribute="top" secondItem="tPk-Sj-9P2" secondAttribute="bottom" constant="40" id="H5L-p5-l8O"/>
                             <constraint firstItem="tPk-Sj-9P2" firstAttribute="top" secondItem="cjr-aK-ypY" secondAttribute="bottom" constant="50" id="RH4-Kc-iFN"/>
                             <constraint firstItem="cjr-aK-ypY" firstAttribute="leading" secondItem="nRX-yY-9jm" secondAttribute="leading" constant="10" id="Ri0-SD-ZIB"/>
                             <constraint firstItem="cjr-aK-ypY" firstAttribute="top" secondItem="0Eb-33-IWb" secondAttribute="bottom" constant="20" id="g1s-M4-LsB"/>
                             <constraint firstItem="tPk-Sj-9P2" firstAttribute="leading" secondItem="nRX-yY-9jm" secondAttribute="leading" constant="10" id="oWV-y5-m7N"/>
                             <constraint firstItem="0Eb-33-IWb" firstAttribute="top" secondItem="nRX-yY-9jm" secondAttribute="top" constant="30" id="qAL-EX-38W"/>
                             <constraint firstItem="0Eb-33-IWb" firstAttribute="leading" secondItem="nRX-yY-9jm" secondAttribute="leading" constant="10" id="rbK-Ik-I06"/>
-                            <constraint firstItem="nRX-yY-9jm" firstAttribute="trailing" secondItem="kjJ-UK-bvp" secondAttribute="trailing" constant="10" id="t7G-VF-XNt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" style="editor" id="6EP-uy-tQj"/>
+                    <navigationItem key="navigationItem" style="editor" id="6EP-uy-tQj">
+                        <barButtonItem key="rightBarButtonItem" title="저장" id="GOE-i1-7Hf">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="SaveLetter:" destination="vpN-HL-fap" id="HhE-yO-vDn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="BodyEdit" destination="tPk-Sj-9P2" id="2U2-dp-ghl"/>
                         <outlet property="TitleEdit" destination="0Eb-33-IWb" id="tGL-W2-q12"/>
@@ -186,7 +179,6 @@
                                     <color key="baseForegroundColor" systemColor="systemRedColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="SaveButton:" destination="vpN-HL-fap" eventType="touchUpInside" id="7Z6-BP-j3U"/>
                                     <action selector="deleteLetter:" destination="ubd-2Q-sEo" eventType="touchUpInside" id="RiN-la-xxl"/>
                                 </connections>
                             </button>
@@ -263,7 +255,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ucv-Oa-XhM"/>
+        <segue reference="Zdi-ag-DE7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="pencil.line" catalog="system" width="128" height="117"/>
